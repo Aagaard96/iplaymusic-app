@@ -9,7 +9,7 @@ export default function FeaturedTracks({ className }) {
                 alt="Dummy"
                 fill
                 className="absolute rounded-lg h-full w-full" />
-            <div className="z-50 text-white p-5 absolute bottom-10">
+            <div className="z-20 text-white p-5 absolute bottom-10">
                 <p className="font-black text-3xl">The Greatest Showman</p>
                 <p className="mt-5 font-thin">Soundtrack</p>
             </div>

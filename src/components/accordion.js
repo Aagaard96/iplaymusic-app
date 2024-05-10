@@ -54,7 +54,8 @@ export default function AccordionCategories() {
                     key={index}
                     title={category.title}
                     indicator={<MoreIcon />}
-                    className={`bg-[${category.bgColor}] rounded-md mt-5`}
+                    style={{ backgroundColor: category.bgColor }}
+                    className="rounded-md mt-5"
                     classNames={{
                         content: "bg-white px-5 py-5 rounded-b-md"
                     }}

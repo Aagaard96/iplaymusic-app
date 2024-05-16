@@ -11,7 +11,7 @@ export default function MenuHeader() {
         <section className="flex justify-between items-center text-2xl pt-5 mb-10">
             <Link href="/" className=""><ArrowBack /></Link>
             <h2 className="uppercase text-xl">{pathname}</h2>
-            <Search />
+            <Link href="/search"><Search /></Link>
         </section>
     )
 }

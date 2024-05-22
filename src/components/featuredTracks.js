@@ -29,7 +29,7 @@ export default function FeaturedTrack({ className }) {
     return (
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mx-auto">
             {tracks.map((track, i) => (
-                <article key={i} className={`w-[350px] h-[425px] relative flex ${className} shadow-lg`}>
+                <article key={i} className={`w-[350px] h-[350px] relative flex ${className} shadow-lg`}>
                     <Image
                         priority
                         src={track.album.images[0].url}
@@ -38,8 +38,8 @@ export default function FeaturedTrack({ className }) {
                         className="absolute rounded-lg h-full w-full"
                     />
                     <div className="z-20 text-white px-5 py-2.5 absolute bottom-10 bg-[#EE0979]/70 rounded-r-md">
-                        <p className="font-black text-3xl">{track.album.name}</p> {/* Assuming album has a name property */}
-                        <p className="mt-5 font-normal text-xl">{track.album.artists.map(artist => artist.name).join(', ')}</p> {/* Assuming album has an artists array */}
+                        <p className="font-black text-3xl">{track.album.name}</p>
+                        <p className="mt-5 font-normal text-xl">{track.album.artists.map(artist => artist.name).join(', ')}</p> {/* Map over artist array og join med et (,) komma */}
                     </div>
                 </article>
             ))}

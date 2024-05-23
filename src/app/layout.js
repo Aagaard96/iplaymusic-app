@@ -1,5 +1,6 @@
 import Navbar from "@/components/navbar";
 import "./globals.css";
+import SessionWrapper from "@/components/sessionWrapper";
 
 export const metadata = {
   title: "iPlayMusic - App",
@@ -8,11 +9,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className="dark:bg-[#341931]">
-        <Navbar />
-        {children}
-      </body>
-    </html>
+    <SessionWrapper>
+      <html lang="en">
+        <body className="dark:bg-[#341931]">
+          <Navbar />
+          {children}
+        </body>
+      </html>
+    </SessionWrapper>
+
   );
 }

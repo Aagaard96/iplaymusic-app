@@ -3,13 +3,11 @@
 import { useState } from "react";
 import PageContent from "@/components/pageContent";
 import Image from "next/image";
-import useSpotifyAuth from "@/hooks/accesToken";
 import { FaSearch } from "react-icons/fa";
 
 export default function SearchTrack() {
     const [searchInput, setSearchInput] = useState("");
     const [tracks, setTracks] = useState([]);
-    const accessToken = useSpotifyAuth();
 
     // Search 
     async function search() {

@@ -2,6 +2,7 @@ import { Accordion, AccordionItem } from "@nextui-org/react"
 import MoreIcon from "./icons/moreIcon"
 import ArrowForward from "./icons/arrowForward"
 import { useEffect, useState } from "react"
+import { useSession } from "next-auth/react"
 
 const Colors = [
     {
@@ -34,40 +35,33 @@ const Colors = [
 ]
 
 export default function AccordionCategories() {
-    const client_id = process.env.NEXT_PUBLIC_CLIENT_ID
-    const client_secret = process.env.NEXT_PUBLIC_CLIENT_SECRET
 
     // Define state variables
     const [categoriesData, setCategoriesData] = useState(null)
     const [error, setError] = useState(null)
 
     // Fetch data when the component mounts
-    useEffect(() => {
-        fetch("https://accounts.spotify.com/api/token", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: `grant_type=client_credentials&client_id=${client_id}&client_secret=${client_secret}`
-        })
-            .then(response => response.json())
-            .then(data => {
-                const AUTH = data.access_token
+    const { data: session } = useSession()
 
-                fetch("https://api.spotify.com/v1/browse/categories", {
-                    headers: {
-                        "Authorization": `Bearer ${AUTH}`
-                    }
+
+    useEffect(() => {
+        {
+            const featuredParameters = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + session?.user?.token
+                }
+            }
+
+            fetch("https://api.spotify.com/v1/browse/categories", featuredParameters)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    setCategoriesData(data)
                 })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data)
-                        setCategoriesData(data)
-                    })
-                    .catch(error => setError(error))
-            })
-            .catch(error => setError(error))
-    }, [client_id, client_secret])
+        }
+    }, [session?.user.token])
 
     return (
         <Accordion

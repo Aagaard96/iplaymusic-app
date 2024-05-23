@@ -1,19 +1,20 @@
 "use client"
 import Image from "next/image"
-import useSpotifyAuth from "@/hooks/accesToken"
+import { useSession } from "next-auth/react"
 import { useState, useEffect } from "react"
 
 export default function FeaturedTrack({ className }) {
     const [tracks, setTracks] = useState([])
-    const accessToken = useSpotifyAuth()
+    const { data: session } = useSession()
+
 
     useEffect(() => {
-        if (accessToken) {
+        {
             const featuredParameters = {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": "Bearer " + accessToken
+                    "Authorization": "Bearer " + session?.user?.token
                 }
             }
 
@@ -24,22 +25,22 @@ export default function FeaturedTrack({ className }) {
                     setTracks(data.tracks)
                 })
         }
-    }, [accessToken])
+    }, [session.user.token])
 
     return (
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mx-auto">
             {tracks.map((track, i) => (
-                <article key={i} className={`w-[350px] h-[350px] relative flex ${className} shadow-lg`}>
+                <article key={i} className={`w-[350px] h-[350px] relative flex ${className} shadow-lg rounded-md`}>
                     <Image
                         priority
                         src={track.album.images[0].url}
                         alt={track.name}
                         fill
-                        className="absolute rounded-lg h-full w-full"
+                        className="absolute rounded-md h-full w-full"
                     />
-                    <div className="z-20 text-white px-5 py-2.5 absolute bottom-10 bg-[#EE0979]/70 rounded-r-md">
-                        <p className="font-black text-3xl">{track.album.name}</p>
-                        <p className="mt-5 font-normal text-xl">{track.album.artists.map(artist => artist.name).join(', ')}</p> {/* Map over artist array og join med et (,) komma */}
+                    <div className="z-20 text-slate-800 px-5 py-2.5 absolute bottom-8 bg-gradient-to-r from-white to-gray-500/70 rounded-r-md">
+                        <p className="font-black text-xl">{track.album.name}</p>
+                        <p className="mt-1 font-normal text-lg">{track.album.artists.map(artist => artist.name).join(', ')}</p> {/* Map over artist array og join med et (,) komma */}
                     </div>
                 </article>
             ))}

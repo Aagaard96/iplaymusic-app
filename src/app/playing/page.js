@@ -32,7 +32,7 @@ export default function NowPLaying() {
 
       <div className="capitalize">
         <div className="capitalize text-center flex flex-col gap-3 mb-5">
-          <p className="font-bold text-lg">don't call me up</p>
+          <p className="font-bold text-lg">dont call me up</p>
           <p>Mabel</p>
         </div>
 

@@ -2,3 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.light {
+    --grape: 114, 35, 204;
+    --nav: 255, 255, 255;
+
+}
+
+.dark {
+    --nav: 17, 22, 37;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --nav: 17, 22, 37;
+    }
+}

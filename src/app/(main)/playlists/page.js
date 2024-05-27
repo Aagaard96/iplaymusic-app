@@ -5,6 +5,7 @@ import PlaylistSong from "@/components/playlistsong";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function SearchPage() {
     const [playlist, setPlaylist] = useState(null);
@@ -47,7 +48,7 @@ export default function SearchPage() {
     }
 
     return (
-        <PageContent>
+        <>
             <Image
                 className="absolute top-0 w-full left-0 -z-10"
                 src="/sound-wave.svg"
@@ -71,15 +72,16 @@ export default function SearchPage() {
             </div>
             <ul>
                 {playlist.tracks.items.map((item, i) => (
-                    <PlaylistSong
-                        key={i}
-                        time={convertDuration(item.track.duration_ms)}
-                        title={item.track.name}
-                        artist={item.track.artists.map(artist => artist.name).join(', ')}
-                        img={item.track.album.images?.[0]?.url}
-                    />
+                    <Link key={i} href={"/playing/" + item.track.id}>
+                        <PlaylistSong
+                            time={convertDuration(item.track.duration_ms)}
+                            title={item.track.name}
+                            artist={item.track.artists.map(artist => artist.name).join(', ')}
+                            img={item.track.album.images?.[0]?.url}
+                        />
+                        </Link>
                 ))}
-            </ul>
-        </PageContent>
-    );
+                    </ul>
+        </>
+            );
 }

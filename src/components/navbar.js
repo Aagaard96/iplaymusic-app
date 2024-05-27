@@ -18,7 +18,7 @@ export default function Navbar() {
     const settingsColor = pathname === "/settings" ? "#000" : "url(#myGradient)"
 
     return (
-        <nav className="h-16 bottom-0 fixed w-full items-center flex z-50 bg-white shadow-[0px_-4px_18px_3px_#00000024]">
+        <nav className="h-16 bottom-0 fixed w-full items-center flex z-50 bg-nav shadow-[0px_-4px_18px_3px_#00000024]">
             <ul className="flex w-full h-full items-center justify-around text-2xl">
                 <li><Link href="/categories"><Pulse fill={categoriesColor} /></Link></li>
                 <li><Link href="/featured"><Microphone fill={featuredColor} /></Link></li>

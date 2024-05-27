@@ -1,6 +1,8 @@
 "use client";
 
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function Dashboard() {
@@ -10,18 +12,35 @@ export default function Dashboard() {
     return (
         <>
             {session ? (
-                <>
-                    <h1>Welcome back</h1>
-                </>
+                <section className="flex items-center flex-col gap-10">
+                    <div className="flex items-center gap-5">
+                        <Image
+                            className="rounded-full"
+                            src={session.user.image}
+                            width={75}
+                            height={75}
+                            alt="User avatar" />
+                        <h1 className="text-lg text-center">Welcome back<br /><span className="font-bold text-xl">{session.user.name}</span></h1>
+                    </div>
+                    <button
+                        onClick={() => signOut()}
+                        className="px-5 py-3 bg-red-500 font-bold text-white rounded-full">
+                        Sign Out
+                    </button>
+                    <Link 
+                    href="/featured"
+                    className="px-5 py-3 bg-blue-400 font-bold text-white rounded-full"
+                    >Explore App</Link>
+                </section>
             ) : (
-                <>
-                    <h1 className="text-3xl text-red-500">You are not logged in</h1>
+                <article className="flex items-center flex-col gap-10">
+                    <h1 className="mt-5 text-xl text-cente font-bold">You are not logged in</h1>
                     <button
                         onClick={() => signIn('spotify')}
-                        className="px-1.5 py-1.5 bg-[#18D860] font-bold text-white rounded-full">
+                        className="px-5 py-3 bg-[#18D860] font-bold text-white rounded-full">
                         Sign in with Spotify
                     </button>
-                </>
+                </article>
             )}
         </>
     );

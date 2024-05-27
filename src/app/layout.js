@@ -1,4 +1,3 @@
-import Navbar from "@/components/navbar";
 import "./globals.css";
 import SessionWrapper from "@/components/sessionWrapper";
 
@@ -11,8 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <SessionWrapper>
       <html lang="en">
-        <body className="dark:bg-[#341931]">
-          <Navbar />
+        <body className="dark">
           {children}
         </body>
       </html>

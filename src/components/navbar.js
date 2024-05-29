@@ -11,11 +11,11 @@ import { usePathname } from "next/navigation"
 export default function Navbar() {
     const pathname = usePathname()
 
-    const categoriesColor = pathname === "/categories" ? "#000" : "url(#myGradient)"
-    const featuredColor = pathname === "/featured" ? "#000" : "url(#myGradient)"
-    const trendingColor = pathname === "/trending" ? "#000" : "#fff"
-    const playlistsColor = pathname === "/playlists" ? "#000" : "url(#myGradient)"
-    const settingsColor = pathname === "/settings" ? "#000" : "url(#myGradient)"
+    const categoriesColor = pathname === "/categories" ? "#341931" : "url(#myGradient)"
+    const featuredColor = pathname === "/featured" ? "#341931" : "url(#myGradient)"
+    const trendingColor = pathname === "/trending" ? "#341931" : "#fff"
+    const playlistsColor = pathname === "/playlists" ? "#341931" : "url(#myGradient)"
+    const settingsColor = pathname === "/settings" ? "#341931" : "url(#myGradient)"
 
     return (
         <nav className="h-16 bottom-0 fixed w-full items-center flex z-50 bg-nav shadow-[0px_-4px_18px_3px_#00000024]">

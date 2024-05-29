@@ -1,6 +1,6 @@
 "use client"
 import Darkmode from "@/components/darkmode";
-import { Switch } from "@nextui-org/react";
+
 
 export default function Settings() {
     return (

@@ -2,19 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Default background color for light theme */
+:root {
+    --main: 255, 255, 255;
+    --nav: 255, 255, 255;
+    --text: 52, 25, 49;
+    background-color: rgb(var(--main)); /* Default background color */
+}
 
 .light {
-    --grape: 114, 35, 204;
+    --main: 255, 255, 255;
     --nav: 255, 255, 255;
-
+    --text: 52, 25, 49;
+    background-color: rgb(var(--main)); /* Light theme background color */
 }
 
 .dark {
+    --main: 52, 25, 49;
     --nav: 17, 22, 37;
+    --text: 255, 255, 255;
+    background-color: rgb(var(--main)); /* Dark theme background color */
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --nav: 17, 22, 37;
+        --main: 52, 25, 49;
+        --text: 255, 255, 255;
+        background-color: rgb(var(--main)); /* Dark theme background color */
     }
 }

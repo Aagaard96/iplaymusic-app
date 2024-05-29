@@ -1,14 +1,15 @@
 "use client"
-import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { useParams } from "next/navigation";
 import { GoDotFill } from "react-icons/go";
 import { IoIosSkipForward } from "react-icons/io";
 import { IoIosSkipBackward } from "react-icons/io";
 import { IoIosFastforward } from "react-icons/io";
 import { IoIosRewind } from "react-icons/io";
 import { IoIosPlay } from "react-icons/io";
+import Loading from "@/app/loading";
 
 export default function NowPlaying() {
   const { data: session } = useSession();
@@ -39,25 +40,21 @@ export default function NowPlaying() {
   }, [session?.user?.token, id]);
 
   if (!singleTrack) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return (
-    <>
-      <section className="flex flex-col place-content-center w-full items-center justify-center mb-20 ">
-        <div className="relative w-full grid place-items-center">
-          <Image
-            src={singleTrack.album.images[0].url}
-            width={100}
-            height={100}
-            alt="wave"
-            className="w-[300px] rounded-md"
-          />
-        </div>
-      </section>
+    <section className="flex flex-col justify-center w-full items-center translate-y-[20%]">
+      <Image
+        src={singleTrack.album.images[0].url}
+        width={100}
+        height={100}
+        alt="wave"
+        className="w-[300px] rounded-md mb-20"
+      />
 
-      <div className="capitalize">
-        <div className="capitalize text-center flex flex-col gap-3 mb-5">
+      <div className="capitalize w-full">
+        <div className="capitalize text-center flex flex-col gap-2 mb-6">
           <p className="font-bold text-lg">{singleTrack.artists[0].name}</p>
           <p>{singleTrack.name}</p>
         </div>
@@ -92,6 +89,6 @@ export default function NowPlaying() {
           </p>
         </div>
       </div>
-    </>
+    </section>
   );
 }

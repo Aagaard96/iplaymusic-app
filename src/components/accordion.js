@@ -1,6 +1,7 @@
 import { Accordion, AccordionItem } from "@nextui-org/react"
 import MoreIcon from "./icons/moreIcon"
-import ArrowForward from "./icons/arrowForward"
+import { IoIosMore } from "react-icons/io";
+import { GoChevronRight } from "react-icons/go";
 import { useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
 
@@ -69,21 +70,20 @@ export default function AccordionCategories() {
                 title: "text-white font-bold pl-5",
                 trigger: "pr-5 text-4xl",
             }}>
-            {/* Check if fetched data is available before rendering */}
             {categoriesData && categoriesData.categories.items.map((category, index) => (
                 <AccordionItem
                     key={index}
                     title={category.name}
-                    indicator={<MoreIcon />}
+                    indicator={<IoIosMore className="text-white" />}
                     style={{ backgroundColor: Colors[index % Colors.length].bgColor }}
                     className="rounded-md mt-5"
                     classNames={{
-                        content: "bg-white px-5 py-5 rounded-b-md"
+                        content: "bg-nav px-5 py-5 rounded-b-md"
                     }}
                 >
                     <div className="flex items-center justify-between font-semibold text-lg">
                         <p>Test</p>
-                        <ArrowForward />
+                        <GoChevronRight />
                     </div>
                 </AccordionItem>
             ))}

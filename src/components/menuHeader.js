@@ -14,6 +14,8 @@ export default function MenuHeader() {
         modifiedPathname = "categories";
     } else if (pathname.startsWith("/playlists")) {
         modifiedPathname = "playlists";
+    } else if (pathname.startsWith("/playlist")) {
+        modifiedPathname = "playlist";
     } else if (pathname === "/settings") {
         modifiedPathname = "settings";
     } else if (pathname.startsWith("/playing")) {

@@ -45,7 +45,7 @@ export default function SearchPage({ className }) {
         <>
             <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mx-auto">
                 {playlist.items.map((playlistItem, i) => (
-                    <Link key={i} href={"/playlists/playlist/" + playlistItem.id}>
+                    <Link key={i} href={"/playlist/" + playlistItem.id}>
                         <article key={i} className={`w-[350px] h-[350px] relative flex ${className} shadow-lg rounded-md`}>
                             <Image
                                 priority

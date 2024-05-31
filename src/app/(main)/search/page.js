@@ -54,8 +54,8 @@ export default function Search() {
             <form className="relative mb-10 text-xl w-full">
                 <input
                     type="text"
-                    className="h-[30px] py-5 px-2 border-2 border-[#EE0979] rounded-l-md outline-4 outline-[#EE0979]"
-                    placeholder="Search tracks, albums, artist.."
+                    className="h-[30px] w-full py-5 px-2 border-2 border-[#EE0979] rounded-l-md outline-4 outline-[#EE0979]"
+                    placeholder="Tracks, albums, artist.."
                     onKeyDown={event => {
                         if (event.key === "Enter") {
                             event.preventDefault();
@@ -88,7 +88,7 @@ export default function Search() {
                                         src={album.images[0]?.url}
                                         alt={album.name}
                                         fill
-                                        className="absolute rounded-md h-full w-full"
+                                        className="absolute rounded-md h-full w-full border border-[#EE0979]"
                                     />
                                 </article>
                             </Link>

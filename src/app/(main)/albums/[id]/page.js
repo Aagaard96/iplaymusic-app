@@ -8,6 +8,7 @@ import { GoDotFill } from "react-icons/go";
 import { BsExplicitFill } from "react-icons/bs";
 import { IoTimeOutline } from "react-icons/io5";
 import Link from "next/link";
+import ListDivider from "@/components/listdivider";
 
 export default function SearchArtist() {
     const { data: session } = useSession();
@@ -76,13 +77,7 @@ export default function SearchArtist() {
             </article>
 
             <article className="mt-10 ">
-                <div className="grid grid-cols-8 items-center border-b-1 border-b-slate-400 pb-2 mb-2">
-                    <span>#</span>
-                    <p className="col-start-2">Title</p>
-                    <span className="col-start-8 flex justify-end">
-                        <IoTimeOutline />
-                    </span>
-                </div>
+                <ListDivider />
                 {album.tracks?.items.map((track, i) => (
                     <Link key={i} href={"/playing/" + track.id}>
                         <div className="grid grid-cols-8 items-center mb-4">

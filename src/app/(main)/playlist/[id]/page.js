@@ -1,5 +1,6 @@
 "use client";
 import Loading from "@/app/loading";
+import ListDivider from "@/components/listdivider";
 import PlaylistSong from "@/components/playlistsong";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
@@ -65,6 +66,7 @@ export default function SelectedPlaylist() {
             <h3 className="text-center font-black text-xl my-8">
                 {singlePlaylist.name}
             </h3>
+            <p className="uppercase text-sm text-center">{singlePlaylist.description}</p>
             <div className="flex mb-2 gap-2 items-center">
                 <div className="bg-white text-black rounded-full size-6 flex items-center justify-center">
                     <FaUserAlt />

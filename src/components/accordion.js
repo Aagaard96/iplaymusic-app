@@ -1,5 +1,4 @@
 import { Accordion, AccordionItem } from "@nextui-org/react"
-import MoreIcon from "./icons/moreIcon"
 import { IoIosMore } from "react-icons/io";
 import { GoChevronRight } from "react-icons/go";
 import { useEffect, useState } from "react"

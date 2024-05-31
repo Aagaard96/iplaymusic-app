@@ -1,13 +1,9 @@
-import Image from "next/image";
-import { IoIosPlay } from "react-icons/io";
+import React from 'react'
 
-export default function PlaylistSong({ time, artist, title, img }) {
+export default function AlbumSongList({ index, time, artist, title }) {
     return (
         <div className="grid grid-cols-8 items-center mb-4">
-            <div className="relative flex justify-center items-center">
-                <Image src={img} width={200} height={200} alt="Test" className="rounded-md border-1 border-[#EE0979]" />
-                <IoIosPlay className="absolute size-7" />
-            </div>
+            <p>{index}</p>
             <div className="flex-grow flex flex-col capitalize overflow-hidden col-start-2 col-span-6 ml-3">
                 <p className="font-extrabold truncate">{title}</p>
                 <p className="truncate">{artist}</p>

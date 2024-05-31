@@ -4,11 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useParams } from "next/navigation";
 import { GoDotFill } from "react-icons/go";
-import { IoIosSkipForward } from "react-icons/io";
-import { IoIosSkipBackward } from "react-icons/io";
-import { IoIosFastforward } from "react-icons/io";
-import { IoIosRewind } from "react-icons/io";
-import { IoIosPlay } from "react-icons/io";
+import { IoIosSkipForward, IoIosSkipBackward, IoIosFastforward, IoIosRewind, IoIosPlay} from "react-icons/io";
 import Loading from "@/app/loading";
 
 export default function NowPlaying() {
@@ -72,21 +68,21 @@ export default function NowPlaying() {
         </div>
 
         <div className="flex justify-around items-center">
-          <p>
+          <button>
             <IoIosSkipBackward className="size-8 text-[#FF6A00]" />
-          </p>
-          <p>
+          </button>
+          <button>
             <IoIosRewind className="size-8" />
-          </p>
-          <div className="text-white w-[70px] h-[70px] bg-gradient-to-r from-[#FF6A00] to-[#EE0979] flex items-center justify-center rounded-full">
+          </button>
+          <button className="text-white w-[70px] h-[70px] bg-gradient-to-r from-[#FF6A00] to-[#EE0979] flex items-center justify-center rounded-full">
             <IoIosPlay size={50} />
-          </div>
-          <p>
+          </button>
+          <button>
             <IoIosFastforward className="size-8" />
-          </p>
-          <p>
+          </button>
+          <button>
             <IoIosSkipForward className="size-8 text-[#EE0979]" />
-          </p>
+          </button>
         </div>
       </div>
     </section>
